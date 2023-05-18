@@ -1,0 +1,96 @@
+.Chatbg {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.chatAvatar {
+    height: 52px !important;
+    width: 52px !important;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    height: 8%;
+    background-color: #e4ece6 !important;
+}
+
+.chatHead {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.chatName {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.chatBody {
+    display: flex;
+    flex-direction: column;
+    height: 84%;
+    overflow: auto;
+}
+
+.chatBody::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 10px;
+
+}
+
+.chatBody::-webkit-scrollbar-thumb {
+    background-color: #b4b4b4;
+    border-radius: 10px;
+
+}
+
+.chatBody::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+
+}
+
+.chatLower {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    background-color: #e4ece6 !important;
+    flex: 1;
+}
+
+.messageInput {
+    display: flex;
+    width: 90%;
+    text-align: left;
+    align-content: center;
+    margin-left: 20px;
+    margin-top: 2px;
+}
+.textField {
+}
+
+.flashingCursor {
+    display: inline-block;
+    width: 5px;
+    height: 1.2em;
+    margin-right: 3px;
+    background-color: #16f351;
+    animation: cursorFlash 1s infinite;
+}
+
+.sendIcon {
+    display: flex;
+    justify-self: flex-end;
+}
+
+@keyframes cursorFlash {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

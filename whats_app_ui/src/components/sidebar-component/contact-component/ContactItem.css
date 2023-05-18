@@ -1,0 +1,50 @@
+.ItemWrapper {
+    display: flex;
+    background-color: #c4ffca;
+    flex-direction: row;
+    justify-content: left;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.ItemButton {
+    justify-content: left !important;
+    width: 100% !important;
+    color: black !important;
+    text-transform: none !important;
+}
+
+.ContactAvatar {
+    margin-left: 20px;
+}
+.ContactName {
+    flex-direction: column;
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+.HeadName {
+    font-weight: 550 !important;
+}
+
+.SubName {
+    font-size: 0.8rem !important;
+    opacity: 0.65;
+}
+
+.LastMsgTime {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 8px !important;
+    margin-right: 20px !important;
+}
+
+
+@media (max-width: 950px) {
+    .ContactAvatar {
+       display: none !important;
+    }
+}

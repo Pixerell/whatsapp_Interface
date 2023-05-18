@@ -1,0 +1,30 @@
+.message {
+    max-width: 60%;
+    width: fit-content;
+    height: fit-content;
+    word-break: break-word;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin: 10px 2.5% 8px;
+    text-align: left;
+}
+
+.sent {
+    background-color: #92ff6e !important;
+    align-self: flex-end !important;
+
+}
+
+.messageContent {
+    font-size: 16px;
+}
+
+.messageSender {
+    font-size: 12px;
+    color: #888;
+}
+
+.messageTime {
+    font-size: 10px;
+    color: #888;
+}
