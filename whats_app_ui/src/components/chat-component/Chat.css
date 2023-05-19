@@ -69,7 +69,11 @@
     margin-left: 20px;
     margin-top: 2px;
 }
+
 .textField {
+    width: 100%;
+    margin-right: 5%;
+    margin-left: 1%;
 }
 
 .flashingCursor {
@@ -84,6 +88,21 @@
 .sendIcon {
     display: flex;
     justify-self: flex-end;
+    transition: 0.1s;
+}
+
+.sendIcon:hover {
+    cursor: pointer;
+    scale: 1.2;
+    rotate: 2deg;
+    transition: 0.2s ease-in;
+}
+
+.sendIcon:active {
+    rotate: -10deg;
+    scale: 1.25;
+    color: #16f351;
+    transition: 0.05s;
 }
 
 @keyframes cursorFlash {

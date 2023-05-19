@@ -3,11 +3,22 @@ import Avatar from "@mui/material/Avatar";
 import {Icon, Input, Typography} from "@mui/material";
 import Message from "./message-component/MessageItem";
 import SendIcon from '@mui/icons-material/Send';
+import {useState} from "react";
+import {sendMessage} from "./SendMessage";
+import {useContactList} from "../../helpers/useContactList";
 
 
-export default function Chat({ contact }) {
-
+export default function Chat({ contact, contactList }) {
     const { messageHistory } = contact;
+    const [msgInput, setMsgInput] = useState("");
+    const [, , appendMessageToContact] = useContactList(); // Include appendMessageToContact within the array destructuring
+
+    const handleSendMessage = () => {
+        console.log(contact, "send cont")
+        console.log(contactList, " - before"); // Before appending the message
+        sendMessage(contact, msgInput, contactList, appendMessageToContact); // Pass updateContactList and appendMessageToContact
+    }
+
 
     return (
         <div className="Chatbg">
@@ -38,10 +49,14 @@ export default function Chat({ contact }) {
                         placeholder={"Input Message"}
                         variant="standard"
                         disableUnderline={true}
+                        value={msgInput}
+                        onChange={(e) => {
+                            setMsgInput(e.target.value);
+                        }}
 
                     />
                 </div>
-                <Icon className="sendIcon">
+                <Icon className="sendIcon" onClick={handleSendMessage}>
                     <SendIcon/>
                 </Icon>
             </div>

@@ -20,7 +20,9 @@
 }
 
 .messageSender {
+    font-weight: bold !important;
     font-size: 12px;
+    margin-right: 20% !important;
     color: #888;
 }
 

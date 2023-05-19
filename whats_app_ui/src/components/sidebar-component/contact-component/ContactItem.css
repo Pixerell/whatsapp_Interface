@@ -5,6 +5,9 @@
     justify-content: left;
     width: 100%;
     margin-top: 20px;
+    border: 2px solid #e4ece6;
+    box-shadow: 0 1px 3px #e4ece6; /* Add the box shadow styles */
+
 }
 
 .ItemButton {
