@@ -15,13 +15,17 @@ function App() {
     const [selectedContact, setSelectedContact] = useState(null);
     const [contactList, setContactList] = useContactList();
 
-    const handleContactSelect = (contact, updatedContactList) => {
+    const handleContactSelect = (contact) => {
         setSelectedContact(contact);
-        setContactList(updatedContactList);
     };
 
 
+    const handleContactListUpdate = (updatedContactList) => {
+        setContactList(updatedContactList);
+    };
+
     let { isAuthorized } = useContext(AuthContext);
+    console.log("contact list in app.js - ", contactList)
 
     if (!isAuthorized) {
         console.log(isAuthorized)
@@ -32,7 +36,8 @@ function App() {
         return (
             <div className="App">
                 <AuthView/>
-                <Sidebar
+                <Sidebar contactList={contactList}
+                         setContactList={setContactList}
                     onContactSelect={(contact, updatedContactList) =>
                         handleContactSelect(contact, updatedContactList)
                     }
@@ -46,7 +51,12 @@ function App() {
                         </div>
                     </div>
                 ) : (
-                    <Chat contact={selectedContact} contactList={contactList} />
+                    <Chat
+                        contactList={contactList}
+                        setContactList={setContactList}
+                        contact={selectedContact}
+                        onContactListUpdate={handleContactListUpdate}
+                    />
            )}    </div>
         );
     }

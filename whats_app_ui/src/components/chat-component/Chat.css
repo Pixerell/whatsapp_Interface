@@ -13,11 +13,13 @@
     display: flex;
     align-items: center;
     height: 8%;
+    width: 100%;
     background-color: #e4ece6 !important;
 }
 
 .chatHead {
     display: flex;
+    width: 100%;
     flex-direction: row;
     align-items: center;
 }
@@ -25,6 +27,23 @@
 .chatName {
     text-align: left;
     margin-left: 20px;
+}
+
+.receiveMsgPanel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 2.5%;
+}
+
+.receiveIcon {
+    scale: 1.25;
+}
+
+.receiveTxt {
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    letter-spacing: 1px !important;
 }
 
 .chatBody {
@@ -63,7 +82,7 @@
 
 .messageInput {
     display: flex;
-    width: 90%;
+    width: 100%;
     text-align: left;
     align-content: center;
     margin-left: 20px;
@@ -89,6 +108,7 @@
     display: flex;
     justify-self: flex-end;
     transition: 0.1s;
+    margin-right: 2.5%;
 }
 
 .sendIcon:hover {

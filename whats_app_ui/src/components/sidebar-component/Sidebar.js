@@ -4,18 +4,15 @@ import Avatar from '@mui/material/Avatar';
 import {Icon, Paper, Stack, TextField} from "@mui/material";
 import LogoutIcon from '@mui/icons-material/Logout';
 import ContactItem from "./contact-component/ContactItem";
-import {useContactList} from "../../helpers/useContactList";
 import {useContext, useState} from "react";
 import {AuthContext} from "../auth-component/AuthContext";
 import PhoneInTalkSharpIcon from '@mui/icons-material/PhoneInTalkSharp';
+import {appendNewContact} from "../../helpers/appendMessageToContact";
 
-export default function Sidebar({onContactSelect }) {
-
+export default function Sidebar({ onContactSelect, contactList, setContactList }) {
     const handleContactSelect = (contact) => {
-        onContactSelect(contact, contactList); // Pass the selected contact and the current contact list
+        onContactSelect(contact);
     };
-
-
 
     const { updateIsAuthorized } = useContext(AuthContext);
 
@@ -23,32 +20,30 @@ export default function Sidebar({onContactSelect }) {
         updateIsAuthorized(false);
     };
 
-    const [contactList, updateContactList] = useContactList();
     const [phoneNumberInput, setPhoneNumberInput] = useState("");
 
-    const addNewContact = () => {
-        const existingContact = contactList.find(
-            (contact) => contact.phoneNumber === phoneNumberInput
-        );
-        if (existingContact) {
-            alert("Phone number already exists in the contact list.");
+    const handleAddNewContact = () => {
+
+        if (!phoneNumberInput || phoneNumberInput.trim() === "") {
+            alert("Enter a valid phone number!")
             return;
         }
+
+        const createdContact = appendNewContact(contactList, phoneNumberInput);
+        const updatedContactList = [...contactList, createdContact];
+
         const newContact = {
-            id: contactList.length + 1,
-            phoneNumber: phoneNumberInput,
-            name: phoneNumberInput,
-            avatar: "",
-            messageHistory: [],
+            ...createdContact,
+            messageHistory: []
         };
 
-        const updatedContactList = [...contactList, newContact];
-        updateContactList(updatedContactList);
         setPhoneNumberInput("");
-        onContactSelect(newContact, updatedContactList); // Pass the updated contactList as an argument
+        const updatedFoundContact = updatedContactList.find((c) => c.id === newContact.id);
+        setContactList(updatedContactList); // Update the contact list in App.js
+        onContactSelect(updatedFoundContact, updatedContactList);
     };
 
-    /*
+
     const sortedContactList = [...contactList].sort((a, b) => {
         const lastMessageA = a.messageHistory[a.messageHistory.length - 1];
         const lastMessageB = b.messageHistory[b.messageHistory.length - 1];
@@ -63,9 +58,8 @@ export default function Sidebar({onContactSelect }) {
             return 0; // Preserve the existing order if both contacts have no message history
         }
     });
-*/
 
-    console.log(contactList, " - oh please father in heaven")
+
 
     return (
         <Paper className="sideBarBg">
@@ -78,7 +72,7 @@ export default function Sidebar({onContactSelect }) {
             </div>
             <div className="chatList">
                 <Stack className="Stack" spacing={2}>
-                    {contactList.map((contact) => (
+                    {sortedContactList.map((contact) => (
                         <ContactItem key={contact.id} contact={contact}  onClick={handleContactSelect}/>
                     ))}
                 </Stack>
@@ -95,7 +89,7 @@ export default function Sidebar({onContactSelect }) {
                                const formattedInput = input.replace(/\D/g, "").slice(0, 15);
                                setPhoneNumberInput(formattedInput);
                            }}/>
-                <Icon className="logoutIcoWrap phoneIcon" onClick={addNewContact}>
+                <Icon className="logoutIcoWrap phoneIcon" onClick={handleAddNewContact}>
                     <PhoneInTalkSharpIcon/>
                 </Icon>
             </div>

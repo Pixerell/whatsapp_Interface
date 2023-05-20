@@ -22,4 +22,12 @@ export const initialContactList = [
             { id: 10, content: 'Player Select 1337', sender: "John Doe", time: '2023-05-19T14:52:29' },
         ]
     },
+    {
+        id: 2,
+        phoneNumber: '111',
+        name: 'Test',
+        avatar: '',
+        messageHistory: [
+        ]
+    },
 ];
