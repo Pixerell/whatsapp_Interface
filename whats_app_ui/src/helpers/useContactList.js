@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { initialContactList } from "./ContactInformation";
 
 export function useContactList() {
@@ -7,10 +7,6 @@ export function useContactList() {
     const updateContactList = (newContactList) => {
         setContactList([...newContactList]);
     };
-
-    useEffect(() => {
-        console.log(contactList, "REAL UPDATED LIST");
-    }, [contactList]);
 
     return [contactList, updateContactList];
 }

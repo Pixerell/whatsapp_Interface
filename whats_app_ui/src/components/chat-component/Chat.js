@@ -47,7 +47,7 @@ export default function Chat({ contact, onContactListUpdate, contactList, setCon
 
             try {
                 const receivedMessage = await receiveMessage();
-
+                console.log(receivedMessage)
                 let phoneNumber = '';
                 let msgContents = '';
                 let senderName = '';
@@ -143,7 +143,7 @@ export default function Chat({ contact, onContactListUpdate, contactList, setCon
             <div className="userInfo">
                 <div className="chatHead">
                     <Avatar className="avatar chatAvatar" alt="Profile Image" src={foundContact.avatar}/>
-                    <span className="chatName">
+                    <span className="chatName">f
                         <Typography className="HeadName" variant="body1">{foundContact.name}</Typography>
                         <Typography className="SubName" variant="body2">+{foundContact.phoneNumber}</Typography>
                     </span>

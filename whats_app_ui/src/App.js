@@ -25,10 +25,8 @@ function App() {
     };
 
     let { isAuthorized } = useContext(AuthContext);
-    console.log("contact list in app.js - ", contactList)
 
     if (!isAuthorized) {
-        console.log(isAuthorized)
         return <AuthView />;
     }
 
